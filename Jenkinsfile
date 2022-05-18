@@ -45,6 +45,9 @@ pipeline {
 
             stage("mishochu.com") {
               steps {
+                dir ('/var/www/mishochu.com/shop') {
+                  sh 'touch index.php'
+                }
                 sh 'cp -R public_html/* /var/www/mishochu.com/shop'
                 sh 'chgrp -R www-data /var/www/mishochu.com/shop'
                 sh 'chmod -R g+w /var/www/mishochu.com/shop'
